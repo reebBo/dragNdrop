@@ -1,0 +1,36 @@
+:host {
+  .toolbar {
+    height: 100px;
+    display: flex;
+  }
+.toolbar{
+  background: rgb(190, 166, 166);
+
+}
+  gridster {
+    display: flex;
+    height: calc(100vh - 115px);
+    flex-direction: column;
+    background: rgb(216, 198, 198);
+  }
+  gridster-item{
+    border-radius: .5em;
+  }
+
+  #add {
+    width: 15%;
+    height: 50%;
+  }
+
+  #delete {
+    border-radius: 50%;
+    margin: 2%;
+  }
+  button {
+    // height: 30px;
+    cursor: pointer;
+  }
+  .item-container{
+    padding: 1em;
+  }
+}

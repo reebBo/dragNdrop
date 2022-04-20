@@ -1,0 +1,21 @@
+ 
+<div class="toolbar">
+  <button id="add" (click)="layoutService.addItem()">Add Item</button>
+</div>
+<gridster [options]="options">
+  <gridster-item *ngFor="let item of layout; index as i" [item]="item">
+    <button id="delete" (click)="layoutService.deleteItem(item)"> 
+      ❌  
+    </button>
+    <div class="item-container">
+     <div>
+      item &nbsp;{{i}}
+     </div>
+     <div>
+      c: {{item.cols}} & r: {{item.rows}}
+     </div>
+    </div>
+  </gridster-item>
+</gridster>
+
+ 

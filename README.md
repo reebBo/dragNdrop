@@ -47,46 +47,17 @@ options: GridsterConfig = {
 
 - in layout.component.html, create a new instance of Gridster in our component template by referencing the <gridster> tag.
 
-<div class="toolbar"></div><gridster [options]="options">
-  <gridster-item *ngFor="let item of layout" [item]="item">
-  </gridster-item>
-</gridster>
-
-- layout.component.scss
-:host {  .toolbar {
-    height: 100px;
-    display: flex;
-  }  gridster {
-    display: flex;
-    height: calc(100vh - 115px);
-    flex-direction: column;
-  }}
-
-
-
+<code>
+  <div class="toolbar"></div>
+  <gridster [options]="options">
+    <gridster-item *ngFor="let item of layout" [item]="item">
+    </gridster-item>
+  </gridster> 
+</code>
+ 
+ 
   - create a service to help us manage our layouts: Layout service
-
-  -We need  entry components so we can place them inside our layout items.
-   * Entry components are bootstrapped components that Angular will load into the DOM as part of the application launch process.
-
-   app.module:
-    @NgModule({
-    declarations: [
-        AppComponent,
-        LayoutComponent,
-        ChartComponent,
-        TableComponent
-    ],
-    imports: [
-        BrowserModule,
-        AppRoutingModule,
-        GridsterModule
-    ],
-    entryComponents: [
-        ChartComponent,
-        TableComponent
-    ],
-
+ 
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
