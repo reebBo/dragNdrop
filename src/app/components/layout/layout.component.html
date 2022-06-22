@@ -1,8 +1,8 @@
- 
-<div class="toolbar">
+<!-- <div class="toolbar">
   <button id="add" (click)="layoutService.addItem()">Add Item</button>
-</div>
-<gridster [options]="options">
+</div> -->
+
+<!-- <gridster [options]="options">
   <gridster-item *ngFor="let item of layout; index as i" [item]="item">
     <button id="delete" (click)="layoutService.deleteItem(item)"> 
       ❌  
@@ -16,6 +16,22 @@
      </div>
     </div>
   </gridster-item>
-</gridster>
+</gridster> -->
 
- 
+<div class="toolbar">
+  <button (click)="layoutService.addItem()">Add Item</button>
+  <div class="draggable" draggable="true" (dragend)="layoutService.dropItem('example1')">
+    Example 1
+  </div>
+  <div class="draggable" draggable="true" (dragend)="layoutService.dropItem('example2')">
+    Example 2
+  </div>
+</div>
+
+<gridster [options]="options">
+  <gridster-item *ngFor="let item of layout" [item]="item" (dragover)="layoutService.setDropId(item.id)">
+    <button style="margin:.2em; border-radius: 1.2em;" (click)="layoutService.deleteItem(item)">
+      ❌
+    </button>
+  </gridster-item>
+</gridster>

@@ -23,7 +23,8 @@ const OptionsGridsterConfig: GridsterConfig = {
 
 
 export class LayoutService {
-
+  dropId: string = '';
+  public components: IComponent[] = [];
 
   // public options: GridsterConfig = {
   //   draggable: {
@@ -58,7 +59,7 @@ export class LayoutService {
     { cols: 1, rows: 1, x: 0, y: 0, id: 10 },
     { cols: 1, rows: 2, x: 0, y: 0, id: 11 },
     { cols: 1, rows: 1, x: 0, y: 0, id: 12 },
-    { cols: 1, rows: 1, x: 0, y: 0, id: 13}
+    { cols: 1, rows: 1, x: 0, y: 0, id: 13 }
 
   ];
 
@@ -82,7 +83,39 @@ export class LayoutService {
   deleteItem(item: any) {
     const itemId: any = this.layout.find(d => d.id === item.id);
     this.layout.splice(this.layout.indexOf(itemId), 1);
+  }
+
+
+  setDropId(dropId: string): void {
+    this.dropId = dropId;
+    // console.log(this.dropId)
+  }
+
+  dropItem(dragId: string): void {
+    const { components } = this;
+    console.log('this.dropId ', this.dropId)
+    console.log('dragId ', dragId)
+
+    const comp: any = components.find(c => c.id === this.dropId);
+    // const comp: IComponent = components.find(c => c.id === this.dropId);
+
+    const updateIdx: number = comp ? components.indexOf(comp) : components.length; 
+    const componentItem: IComponent = {
+      id: this.dropId,
+      componentRef: dragId
+    }; 
+    
+    this.components = Object.assign([], components, { [updateIdx]: componentItem });
   } 
+  
+  
+  // getComponentRef(id: string): string {
+  //   const comp = this.components.find(c => c.id === id);
+  //   return comp ? comp.componentRef : null;
+  // }
+
+
 }
 
 
+// https://medium.com/javascript-in-plain-english/drag-and-drop-dashboard-builder-with-angular-and-gridster-a07592e54ce2
